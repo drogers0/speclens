@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "SpecLens",
+  "version": "0.1.0",
+  "description": "Annotate CPU/GPU names on shopping sites with PassMark performance, rank, and price.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.cpubenchmark.net/*",
+    "https://www.videocardbenchmark.net/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "src/content.js"
+      ],
+      "css": [
+        "src/styles.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/*.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "src/bg.js",
+    "type": "module"
+  }
+}

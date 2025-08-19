@@ -1,0 +1,9 @@
+.spa-ann .spa-chip {
+  font-size: 0.9em;
+  opacity: 0.8;
+  margin-left: 0.25em;
+  padding: 0.05em 0.35em;
+  border-radius: 0.6em;
+  border: 1px solid rgba(0,0,0,0.15);
+  background: rgba(0,0,0,0.04);
+}
