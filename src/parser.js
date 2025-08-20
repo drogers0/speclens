@@ -1,4 +1,4 @@
-import { keyFor, normalizeName } from "./util.js";
+import { normalizeName } from "./util.js";
 
 export function parseCPUListHTML(html) {
   return parsePassMarkTable(html);
@@ -15,7 +15,7 @@ function parsePassMarkTable(html) {
   for (const tr of rows) {
     const tds = tr.querySelectorAll("td");
     if (tds.length < 3) continue;
-    const name = normalizeName(tds[0]?.textContent?.trim());
+    const name = tds[0]?.textContent?.trim();
     const score = tds[1]?.textContent?.trim().replace(/,/g, "");
     const rank = tds[2]?.textContent?.trim().replace(/,/g, "");
     const value = tds[3]?.textContent?.trim();
@@ -23,7 +23,7 @@ function parsePassMarkTable(html) {
     if (!name || !/\d/.test(score || "")) continue;
     items.push({
       name,
-      key: keyFor(name),
+      key: normalizeName(name),
       score: Number(score),
       rank: Number(rank) || null,
       value: value || null,
